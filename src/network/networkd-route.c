@@ -1,5 +1,6 @@
 /* SPDX-License-Identifier: LGPL-2.1-or-later */
 
+#include <netinet/in.h>
 #include <linux/icmpv6.h>
 #include <linux/ipv6_route.h>
 #include <linux/nexthop.h>

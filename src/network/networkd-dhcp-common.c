@@ -1,7 +1,8 @@
 /* SPDX-License-Identifier: LGPL-2.1-or-later */
 
 #include <netinet/in.h>
-#include <linux/if_arp.h>
+#include <net/if_arp.h>
+#include <net/if.h>
 
 #include "bus-error.h"
 #include "dhcp-identifier.h"
@@ -13,6 +14,7 @@
 #include "networkd-dhcp-common.h"
 #include "networkd-link.h"
 #include "networkd-manager.h"
+#include <netinet/if_ether.h>
 #include "networkd-network.h"
 #include "parse-util.h"
 #include "socket-util.h"
