@@ -32,6 +32,7 @@
 #include "strv.h"
 #include "user-util.h"
 #include "virt.h"
+#include "missing_type.h"
 
 typedef enum MountMode {
         MNT_NONE           = 0,
