@@ -17,6 +17,7 @@
 #include "strv.h"
 #include "user-util.h"
 #include "util.h"
+#include "missing_stdlib.h"
 
 Settings *settings_new(void) {
         Settings *s;

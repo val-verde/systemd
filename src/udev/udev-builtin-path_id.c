@@ -22,6 +22,7 @@
 #include "sysexits.h"
 #include "udev-builtin.h"
 #include "udev-util.h"
+#include "missing_stdlib.h"
 
 _printf_(2,3)
 static void path_prepend(char **path, const char *fmt, ...) {

@@ -98,6 +98,7 @@
 #include "unit-serialize.h"
 #include "user-util.h"
 #include "utmp-wtmp.h"
+#include "missing_stdlib.h"
 
 #define IDLE_TIMEOUT_USEC (5*USEC_PER_SEC)
 #define IDLE_TIMEOUT2_USEC (1*USEC_PER_SEC)

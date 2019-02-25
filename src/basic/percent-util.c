@@ -3,6 +3,7 @@
 #include "percent-util.h"
 #include "string-util.h"
 #include "parse-util.h"
+#include "missing_stdlib.h"
 
 static int parse_parts_value_whole(const char *p, const char *symbol) {
         const char *pc, *n;

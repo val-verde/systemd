@@ -21,6 +21,7 @@
 #include "nss-util.h"
 #include "signal-util.h"
 #include "string-util.h"
+#include "missing_stdlib.h"
 
 static void setup_logging(void) {
         /* We need a dummy function because log_parse_environment is a macro. */
