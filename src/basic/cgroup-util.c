@@ -766,7 +766,7 @@ int cg_install_release_agent(const char *controller, const char *agent) {
 
         sc = strstrip(contents);
         if (isempty(sc)) {
-                r = write_string_file(fs, agent, WRITE_STRING_FILE_DISABLE_BUFFER);
+                r = write_string_file(fs, agent, 0);
                 if (r < 0)
                         return r;
         } else if (!path_equal(sc, agent))
@@ -784,7 +784,7 @@ int cg_install_release_agent(const char *controller, const char *agent) {
 
         sc = strstrip(contents);
         if (streq(sc, "0")) {
-                r = write_string_file(fs, "1", WRITE_STRING_FILE_DISABLE_BUFFER);
+                r = write_string_file(fs, "1", 0);
                 if (r < 0)
                         return r;
 
@@ -811,7 +811,7 @@ int cg_uninstall_release_agent(const char *controller) {
         if (r < 0)
                 return r;
 
-        r = write_string_file(fs, "0", WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(fs, "0", 0);
         if (r < 0)
                 return r;
 
@@ -821,7 +821,7 @@ int cg_uninstall_release_agent(const char *controller) {
         if (r < 0)
                 return r;
 
-        r = write_string_file(fs, "", WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(fs, "", 0);
         if (r < 0)
                 return r;
 
@@ -1651,7 +1651,7 @@ int cg_set_attribute(const char *controller, const char *path, const char *attri
         if (r < 0)
                 return r;
 
-        return write_string_file(p, value, WRITE_STRING_FILE_DISABLE_BUFFER);
+        return write_string_file(p, value, 0);
 }
 
 int cg_get_attribute(const char *controller, const char *path, const char *attribute, char **ret) {

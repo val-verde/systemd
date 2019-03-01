@@ -2751,7 +2751,7 @@ static int reset_audit_loginuid(void) {
         if (streq(p, "4294967295"))
                 return 0;
 
-        r = write_string_file("/proc/self/loginuid", "4294967295", WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file("/proc/self/loginuid", "4294967295", 0);
         if (r < 0) {
                 log_error_errno(r,
                                 "Failed to reset audit login UID. This probably means that your kernel is too\n"
@@ -4148,7 +4148,7 @@ static int setup_uid_map(
                 return log_oom();
 
         xsprintf(uid_map, "/proc/" PID_FMT "/uid_map", pid);
-        r = write_string_file(uid_map, s, WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(uid_map, s, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to write UID map: %m");
 
@@ -4158,7 +4158,7 @@ static int setup_uid_map(
                 return log_oom();
 
         xsprintf(uid_map, "/proc/" PID_FMT "/gid_map", pid);
-        r = write_string_file(uid_map, s, WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(uid_map, s, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to write GID map: %m");
 

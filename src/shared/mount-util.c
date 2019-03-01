@@ -1019,13 +1019,13 @@ static int make_userns(uid_t uid_shift, uid_t uid_range) {
         xsprintf(line, UID_FMT " " UID_FMT " " UID_FMT "\n", 0, uid_shift, uid_range);
 
         xsprintf(uid_map, "/proc/" PID_FMT "/uid_map", pid);
-        r = write_string_file(uid_map, line, WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(uid_map, line, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to write UID map: %m");
 
         /* We always assign the same UID and GID ranges */
         xsprintf(uid_map, "/proc/" PID_FMT "/gid_map", pid);
-        r = write_string_file(uid_map, line, WRITE_STRING_FILE_DISABLE_BUFFER);
+        r = write_string_file(uid_map, line, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to write GID map: %m");
 
