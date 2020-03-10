@@ -1047,13 +1047,15 @@ int groupdb_iterator_get(UserDBIterator *iterator, GroupRecord **ret) {
                 if (gr) {
                         _cleanup_free_ char *buffer = NULL;
                         bool incomplete = false;
+#if ENABLE_GSHADOW
                         struct sgrp sgrp;
-
+#endif
                         if (streq_ptr(gr->gr_name, "root"))
                                 iterator->synthesize_root = false;
                         if (gr->gr_gid == GID_NOBODY)
                                 iterator->synthesize_nobody = false;
 
+#if ENABLE_GSHADOW
                         if (!FLAGS_SET(iterator->flags, USERDB_SUPPRESS_SHADOW)) {
                                 r = nss_sgrp_for_group(gr, &sgrp, &buffer);
                                 if (r < 0) {
@@ -1066,6 +1068,9 @@ int groupdb_iterator_get(UserDBIterator *iterator, GroupRecord **ret) {
                         }
 
                         r = nss_group_to_group_record(gr, r >= 0 ? &sgrp : NULL, ret);
+#else
+                        r = nss_group_to_group_record(gr, NULL, ret);
+#endif
                         if (r < 0)
                                 return r;
 
