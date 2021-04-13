@@ -20,6 +20,12 @@
 #include <asm/sgidefs.h>
 #endif
 
+#ifndef _MIPS_SIM_ABI32
+#define _MIPS_SIM_ABI32		1
+#define _MIPS_SIM_NABI32	2
+#define _MIPS_SIM_ABI64		3
+#endif
+
 #include "missing_keyctl.h"
 #include "missing_stat.h"
 #include "missing_syscall_def.h"
