@@ -111,7 +111,7 @@ smackfs,         {SMACK_MAGIC}
 # smb3 is an alias for cifs
 smb3,            {CIFS_MAGIC_NUMBER}
 # smbfs was removed from the kernel in 2010, the magic remains
-smbfs,           {SMB_SUPER_MAGIC}
+smbfs,           {SMB_SUPER_MAGIC, SMB2_SUPER_MAGIC}
 sockfs,          {SOCKFS_MAGIC}
 squashfs,        {SQUASHFS_MAGIC}
 sysfs,           {SYSFS_MAGIC}
